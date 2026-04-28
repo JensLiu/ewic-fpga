@@ -7,7 +7,8 @@ module uart_tx #(
     input  wire       i_clk,
     input  wire       i_tx_dv,                                  // High when we want to start sending
     input  wire [7:0] i_tx_data,       // Data to send
-    output reg        o_tx_serial                               // Serialized data
+    output reg        o_tx_serial,                              // Serialized data
+    output wire       o_tx_busy                                 // High whenever a frame is in flight
 );
 
     // FSM states
@@ -18,6 +19,8 @@ module uart_tx #(
         STOP_BIT  = 2'd3;
 
     reg [1:0] r_state = IDLE;
+
+    assign o_tx_busy = (r_state != IDLE);
 
     localparam integer R_CLOCKS_PER_BIT = G_CLK_FREQ / G_BAUDRATE;
 

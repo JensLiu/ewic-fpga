@@ -124,3 +124,65 @@ INFO: [Labtools 27-3164] End of startup status: HIGH
 program_hw_devices: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 8015.188 ; gain = 0.000 ; free physical = 6015 ; free virtual = 15275
 refresh_hw_device [lindex [get_hw_devices xcu280_u55c_0] 0]
 INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Xilinx/21760201R00KA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Xilinx/21760201R00KA
+INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Xilinx/21760201R00KA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Xilinx/21760201R00KA
+INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+refresh_hw_device [lindex [get_hw_devices xcu280_u55c_0] 0]
+INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xcu280_u55c_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xcu280_u55c_0]
+set_property PROGRAM.FILE {/home/alfonso/TFM/ewic-fpga/uart_design.runs/impl_1/top.bit} [get_hw_devices xcu280_u55c_0]
+program_hw_devices [get_hw_devices xcu280_u55c_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+program_hw_devices: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 8018.156 ; gain = 0.000 ; free physical = 1597 ; free virtual = 12583
+refresh_hw_device [lindex [get_hw_devices xcu280_u55c_0] 0]
+INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+close_hw_manager
+INFO: [Device 21-403] Loading part xcu280-fsvh2892-2L-e
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2023.2
+  **** Build date : Oct 13 2023 at 20:26:23
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2023.2.0
+  ****** Build date   : Oct 10 2023-06:01:56
+    **** Build number : 2023.2.1696910516
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Xilinx/21760201R00KA
+set_property PROGRAM.FILE {/home/alfonso/TFM/ewic-fpga/uart_design.runs/impl_1/top.bit} [get_hw_devices xcu280_u55c_0]
+current_hw_device [get_hw_devices xcu280_u55c_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xcu280_u55c_0] 0]
+INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xcu280_u55c_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xcu280_u55c_0]
+set_property PROGRAM.FILE {/home/alfonso/TFM/echo.bit} [get_hw_devices xcu280_u55c_0]
+program_hw_devices [get_hw_devices xcu280_u55c_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+program_hw_devices: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 9759.156 ; gain = 0.000 ; free physical = 198 ; free virtual = 10932
+refresh_hw_device [lindex [get_hw_devices xcu280_u55c_0] 0]
+INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Xilinx/21760201R00KA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Xilinx/21760201R00KA
+INFO: [Labtools 27-1434] Device xcu280_u55c (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.

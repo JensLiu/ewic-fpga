@@ -1,0 +1,546 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Apr 23 17:43:54 2026
+# Process ID: 46033
+# Current directory: /home/alfonso/TFM/ewic-fpga/uart_design.runs/synth_1
+# Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: /home/alfonso/TFM/ewic-fpga/uart_design.runs/synth_1/top.vds
+# Journal file: /home/alfonso/TFM/ewic-fpga/uart_design.runs/synth_1/vivado.jou
+# Running On: alfonso-Modern-14-B4MW, OS: Linux, CPU Frequency: 1420.196 MHz, CPU Physical cores: 8, Host memory: 16133 MB
+#-----------------------------------------------------------
+source top.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.320 ; gain = 13.902 ; free physical = 4729 ; free virtual = 11290
+Command: read_checkpoint -auto_incremental -incremental /home/alfonso/TFM/ewic-fpga/uart_design.srcs/utils_1/imports/synth_1/top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/alfonso/TFM/ewic-fpga/uart_design.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top top -part xcu280-fsvh2892-2L-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcu280'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcu280'
+INFO: [Device 21-403] Loading part xcu280-fsvh2892-2L-e
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 46072
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 3048.949 ; gain = 398.652 ; free physical = 2698 ; free virtual = 9260
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-11067] parameter 'MAX_PAYLOAD_BYTES' declared inside package 'pkg_sdr_ctrl_protocol' shall be treated as localparam [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/pkg_sdr_ctrl_protocol.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'top' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/top.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/alfonso/TFM/ewic-fpga/uart_design.runs/synth_1/.Xil/Vivado-46033-alfonso-Modern-14-B4MW/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.runs/synth_1/.Xil/Vivado-46033-alfonso-Modern-14-B4MW/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'uart_top' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/uart_top.sv:3]
+	Parameter G_CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter G_BAUDRATE bound to: 115200 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/uart_tx.sv:3]
+	Parameter G_CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter G_BAUDRATE bound to: 115200 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/uart_tx.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/uart_rx.sv:3]
+	Parameter G_CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter G_BAUDRATE bound to: 115200 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/uart_rx.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'uart_top' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/uart_top.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'sdr_ctrl_protocol_byte_serialiser' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_serialiser.sv:8]
+INFO: [Synth 8-226] default block is never used [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_serialiser.sv:49]
+INFO: [Synth 8-6155] done synthesizing module 'sdr_ctrl_protocol_byte_serialiser' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_serialiser.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'sdr_ctrl_protocol_byte_decoder' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_decoder.sv:8]
+INFO: [Synth 8-226] default block is never used [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_decoder.sv:43]
+INFO: [Synth 8-6155] done synthesizing module 'sdr_ctrl_protocol_byte_decoder' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_decoder.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'sdr_ctrl_protocol_engine' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_engine.sv:14]
+INFO: [Synth 8-6155] done synthesizing module 'sdr_ctrl_protocol_engine' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_engine.sv:14]
+INFO: [Synth 8-6157] synthesizing module 'test_core' [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/test_core.sv:3]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/test_core.sv:45]
+INFO: [Synth 8-6155] done synthesizing module 'test_core' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/rtl/test_core.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'top' (0#1) [/home/alfonso/TFM/ewic-fpga/uart_design.srcs/sources_1/new/top.sv:4]
+WARNING: [Synth 8-7129] Port core_rd_valid in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[31] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[30] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[29] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[28] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[27] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[26] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[25] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[24] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[23] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[22] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[21] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[20] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[19] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[18] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[17] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[16] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[15] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[14] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[13] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[12] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[11] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[10] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[9] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[8] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[7] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[6] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[5] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[4] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[3] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[2] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[1] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_data[0] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[7] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[6] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[5] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[4] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[3] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[2] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[1] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port core_rd_len[0] in module test_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[opcode][7] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[opcode][6] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][511] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][510] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][509] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][508] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][507] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][506] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][505] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][504] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][503] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][502] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][501] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][500] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][499] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][498] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][497] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][496] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][495] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][494] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][493] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][492] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][491] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][490] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][489] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][488] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][487] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][486] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][485] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][484] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][483] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][482] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][481] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][480] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][479] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][478] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][477] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][476] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][475] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][474] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][473] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][472] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][471] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][470] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][469] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][468] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][467] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][466] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][465] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][464] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][463] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][462] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][461] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][460] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][459] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][458] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][457] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][456] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsp_data[payload][455] in module sdr_ctrl_protocol_engine is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 3131.918 ; gain = 481.621 ; free physical = 2594 ; free virtual = 9157
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 3146.762 ; gain = 496.465 ; free physical = 2594 ; free virtual = 9157
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 3146.762 ; gain = 496.465 ; free physical = 2594 ; free virtual = 9157
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3146.762 ; gain = 0.000 ; free physical = 2594 ; free virtual = 9157
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/alfonso/TFM/ewic-fpga/uart_design.gen/sources_1/ip/clk_wiz_0_1/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'pll_inst'
+Finished Parsing XDC File [/home/alfonso/TFM/ewic-fpga/uart_design.gen/sources_1/ip/clk_wiz_0_1/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'pll_inst'
+Parsing XDC File [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK0_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:133]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK0_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:134]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:135]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:136]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:138]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK1_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:140]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK1_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:141]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:142]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:143]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:145]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK3_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:149]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK3_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:150]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK3_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:151]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK3_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:152]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_CLK1_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:166]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_CLK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:167]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK5_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:168]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK5_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:169]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_CLK0_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:174]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_CLK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:175]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK2_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:176]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK2_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:177]
+WARNING: [Vivado 12-584] No ports matched 'MGT_SI570_CLOCK0_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:184]
+WARNING: [Vivado 12-584] No ports matched 'MGT_SI570_CLOCK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:185]
+WARNING: [Vivado 12-584] No ports matched 'QSFP0_CLOCK_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:186]
+WARNING: [Vivado 12-584] No ports matched 'QSFP0_CLOCK_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:187]
+WARNING: [Vivado 12-584] No ports matched 'QSFP0_FS'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:189]
+WARNING: [Vivado 12-584] No ports matched 'QSFP0_FS'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:190]
+WARNING: [Vivado 12-584] No ports matched 'QSFP0_OEB'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:191]
+WARNING: [Vivado 12-584] No ports matched 'QSFP0_OEB'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:192]
+WARNING: [Vivado 12-584] No ports matched 'MGT_SI570_CLOCK1_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:199]
+WARNING: [Vivado 12-584] No ports matched 'MGT_SI570_CLOCK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:200]
+WARNING: [Vivado 12-584] No ports matched 'QSFP1_CLOCK_N'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:201]
+WARNING: [Vivado 12-584] No ports matched 'QSFP1_CLOCK_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:202]
+WARNING: [Vivado 12-584] No ports matched 'QSFP1_OEB'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:203]
+WARNING: [Vivado 12-584] No ports matched 'QSFP1_OEB'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:204]
+WARNING: [Vivado 12-584] No ports matched 'QSFP1_FS'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:205]
+WARNING: [Vivado 12-584] No ports matched 'QSFP1_FS'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:206]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:210]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:211]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK3_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:212]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_CLK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:213]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK2_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:214]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_CLK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:215]
+WARNING: [Vivado 12-584] No ports matched 'SYS_CLK5_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:216]
+WARNING: [Vivado 12-584] No ports matched 'MGT_SI570_CLOCK0_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:217]
+WARNING: [Vivado 12-584] No ports matched 'QSFP0_CLOCK_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:218]
+WARNING: [Vivado 12-584] No ports matched 'MGT_SI570_CLOCK1_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:219]
+WARNING: [Vivado 12-584] No ports matched 'QSFP1_CLOCK_P'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:220]
+WARNING: [Vivado 12-584] No ports matched 'PEX_PWRBRKN'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:226]
+WARNING: [Vivado 12-584] No ports matched 'PEX_PWRBRKN'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:227]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_PERST'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:228]
+WARNING: [Vivado 12-584] No ports matched 'PCIE_PERST'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:229]
+WARNING: [Vivado 12-584] No ports matched 'SYSMON_SDA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:235]
+WARNING: [Vivado 12-584] No ports matched 'SYSMON_SDA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:236]
+WARNING: [Vivado 12-584] No ports matched 'SYSMON_SCL'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:237]
+WARNING: [Vivado 12-584] No ports matched 'SYSMON_SCL'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:238]
+WARNING: [Vivado 12-584] No ports matched 'I2C_MAIN_INT_B'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:246]
+WARNING: [Vivado 12-584] No ports matched 'I2C_MAIN_INT_B'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:247]
+WARNING: [Vivado 12-584] No ports matched 'I2C_MUX0_INTB_FPGA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:248]
+WARNING: [Vivado 12-584] No ports matched 'I2C_MUX0_INTB_FPGA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:249]
+WARNING: [Vivado 12-584] No ports matched 'I2C_FPGA_SDA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:250]
+WARNING: [Vivado 12-584] No ports matched 'I2C_FPGA_SDA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:251]
+WARNING: [Vivado 12-584] No ports matched 'I2C_FPGA_SCL'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:252]
+WARNING: [Vivado 12-584] No ports matched 'I2C_FPGA_SCL'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:253]
+WARNING: [Vivado 12-584] No ports matched 'FPGA_TXD_MSP'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:269]
+WARNING: [Vivado 12-584] No ports matched 'FPGA_TXD_MSP'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:270]
+WARNING: [Vivado 12-584] No ports matched 'FPGA_RXD_MSP'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:271]
+WARNING: [Vivado 12-584] No ports matched 'FPGA_RXD_MSP'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:272]
+WARNING: [Vivado 12-584] No ports matched 'HBM_CATTRIP'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:279]
+WARNING: [Vivado 12-584] No ports matched 'HBM_CATTRIP'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:280]
+WARNING: [Vivado 12-584] No ports matched 'HBM_CATTRIP'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:281]
+WARNING: [Vivado 12-584] No ports matched 'DDR4_RESET_GATE'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:287]
+WARNING: [Vivado 12-584] No ports matched 'DDR4_RESET_GATE'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:288]
+WARNING: [Vivado 12-584] No ports matched 'CPU_RESET_FPGA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:304]
+WARNING: [Vivado 12-584] No ports matched 'CPU_RESET_FPGA'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:305]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[42]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:317]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[42]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:318]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[43]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:319]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[43]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:320]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[40]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:321]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[40]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:322]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[41]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:323]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[41]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:324]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_c[10]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:325]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_c[10]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:326]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_t[10]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:327]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_t[10]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:328]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[44]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:329]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[44]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:330]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[45]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:331]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[45]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:332]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[46]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:333]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[46]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:334]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[47]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:335]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dq[47]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:336]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_c[11]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:337]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_c[11]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:338]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_t[11]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:339]
+WARNING: [Vivado 12-584] No ports matched 'c0_ddr4_dqs_t[11]'. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:340]
+INFO: [Common 17-14] Message 'Vivado 12-584' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc:340]
+Finished Parsing XDC File [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/alfonso/TFM/ewic-fpga/alveo-u280-xdc.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3294.324 ; gain = 0.000 ; free physical = 2556 ; free virtual = 9119
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3294.359 ; gain = 0.000 ; free physical = 2556 ; free virtual = 9119
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 3294.359 ; gain = 644.062 ; free physical = 2558 ; free virtual = 9121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcu280-fsvh2892-2L-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 3294.359 ; gain = 644.062 ; free physical = 2558 ; free virtual = 9121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for USER_SI570_CLOCK_N. (constraint file  /home/alfonso/TFM/ewic-fpga/uart_design.gen/sources_1/ip/clk_wiz_0_1/clk_wiz_0/clk_wiz_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for USER_SI570_CLOCK_N. (constraint file  /home/alfonso/TFM/ewic-fpga/uart_design.gen/sources_1/ip/clk_wiz_0_1/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for USER_SI570_CLOCK_P. (constraint file  /home/alfonso/TFM/ewic-fpga/uart_design.gen/sources_1/ip/clk_wiz_0_1/clk_wiz_0/clk_wiz_0_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for USER_SI570_CLOCK_P. (constraint file  /home/alfonso/TFM/ewic-fpga/uart_design.gen/sources_1/ip/clk_wiz_0_1/clk_wiz_0/clk_wiz_0_in_context.xdc, line 6).
+Applied set_property KEEP_HIERARCHY = SOFT for pll_inst. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 3294.359 ; gain = 644.062 ; free physical = 2558 ; free virtual = 9121
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'uart_tx'
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'uart_rx'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sdr_ctrl_protocol_byte_serialiser'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sdr_ctrl_protocol_engine'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'test_core'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                               00 |                               00
+               START_BIT |                               01 |                               01
+               DATA_BITS |                               10 |                               10
+                STOP_BIT |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_reg' using encoding 'sequential' in module 'uart_tx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                               00 |                               00
+               START_BIT |                               01 |                               01
+               DATA_BITS |                               10 |                               10
+                STOP_BIT |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_reg' using encoding 'sequential' in module 'uart_rx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                S_UNINIT |                              000 |                              000
+                  S_IDLE |                              001 |                              001
+           S_WAIT_ACK_TX |                              010 |                              010
+          S_TX_STREAMING |                              011 |                              011
+             S_TX_PAUSED |                              100 |                              100
+           S_WAIT_ACK_RX |                              101 |                              101
+          S_RX_STREAMING |                              110 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sdr_ctrl_protocol_engine'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                S_SETTLE |                              001 |                               00
+                    S_TX |                              010 |                               01
+                   S_GAP |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'test_core'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3294.359 ; gain = 644.062 ; free physical = 2551 ; free virtual = 9115
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   24 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 4     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 2     
++---Registers : 
+	              512 Bit    Registers := 2     
+	               24 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 13    
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   4 Input  512 Bit        Muxes := 2     
+	   2 Input  512 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 3     
+	   7 Input   32 Bit        Muxes := 2     
+	   3 Input   24 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 8     
+	   2 Input    8 Bit        Muxes := 3     
+	   7 Input    8 Bit        Muxes := 2     
+	   3 Input    5 Bit        Muxes := 1     
+	   7 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 4     
+	   7 Input    3 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 4     
+	   5 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 16    
+	   4 Input    1 Bit        Muxes := 21    
+	   7 Input    1 Bit        Muxes := 6     
+	   3 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 9024 (col length:94)
+BRAMs: 4032 (col length: RAMB18 288 RAMB36 144)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 3294.359 ; gain = 644.062 ; free physical = 2549 ; free virtual = 9120
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 3591.285 ; gain = 940.988 ; free physical = 2195 ; free virtual = 8766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |clk_wiz |     1|
+|2     |CARRY8  |    21|
+|3     |LUT1    |    30|
+|4     |LUT2    |    80|
+|5     |LUT3    |    26|
+|6     |LUT4    |    53|
+|7     |LUT5    |    32|
+|8     |LUT6    |    58|
+|9     |FDCE    |    88|
+|10    |FDPE    |     1|
+|11    |FDRE    |   144|
+|12    |FDSE    |     2|
+|13    |IBUF    |     1|
+|14    |OBUF    |     1|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.348 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 3629.348 ; gain = 831.453 ; free physical = 2163 ; free virtual = 8735
+Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 3629.355 ; gain = 979.051 ; free physical = 2163 ; free virtual = 8735
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3637.348 ; gain = 0.000 ; free physical = 2462 ; free virtual = 9033
+INFO: [Netlist 29-17] Analyzing 22 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3723.621 ; gain = 0.000 ; free physical = 2415 ; free virtual = 8986
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IBUF => IBUF (IBUFCTRL, INBUF): 1 instance 
+
+Synth Design complete | Checksum: b04c9e3a
+INFO: [Common 17-83] Releasing license: Synthesis
+54 Infos, 203 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:38 . Memory (MB): peak = 3723.656 ; gain = 2393.914 ; free physical = 2415 ; free virtual = 8986
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2961.836; main = 2961.836; forked = 387.096
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4324.566; main = 3723.625; forked = 1030.238
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3747.633 ; gain = 0.000 ; free physical = 2415 ; free virtual = 8986
+INFO: [Common 17-1381] The checkpoint '/home/alfonso/TFM/ewic-fpga/uart_design.runs/synth_1/top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 23 17:44:42 2026...

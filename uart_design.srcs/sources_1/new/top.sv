@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`default_nettype none
 
 module top (
     input wire USER_SI570_CLOCK_P,

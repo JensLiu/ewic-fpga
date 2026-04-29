@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date             : Wed Apr 29 17:24:53 2026
+| Date             : Wed Apr 29 18:28:34 2026
 | Host             : alfonso-Modern-14-B4MW running 64-bit Ubuntu 24.04.2 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,11 +30,11 @@ Table of Contents
 ----------
 
 +--------------------------+---------------+
-| Total On-Chip Power (W)  | 3.192         |
+| Total On-Chip Power (W)  | 3.191         |
 |   FPGA Power (W)         | 2.951         |
 |   HBM Power (W)          | 0.241         |
 | Design Power Budget (W)  | 160.000       |
-| Power Budget Margin (W)  | 156.808 (MET) |
+| Power Budget Margin (W)  | 156.809 (MET) |
 | Dynamic (W)              | 0.062         |
 | Device Static (W)        | 3.129         |
 | Effective TJA (C/W)      | 0.4           |
@@ -54,17 +54,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        4 |       --- |             --- |
-| CLB Logic      |    <0.001 |      515 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      196 |   1303680 |            0.02 |
-|   Register     |    <0.001 |      221 |   2607360 |           <0.01 |
-|   CARRY8       |    <0.001 |       18 |    162960 |            0.01 |
-|   Others       |     0.000 |       19 |       --- |             --- |
-| Signals        |    <0.001 |      409 |       --- |             --- |
+| CLB Logic      |    <0.001 |      554 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      217 |   1303680 |            0.02 |
+|   Register     |    <0.001 |      237 |   2607360 |           <0.01 |
+|   CARRY8       |    <0.001 |       21 |    162960 |            0.01 |
+|   Others       |     0.000 |       20 |       --- |             --- |
+| Signals        |    <0.001 |      435 |       --- |             --- |
 | Block RAM      |    <0.001 |        1 |      2016 |            0.05 |
 | PLL            |     0.058 |        1 |       --- |             --- |
 | I/O            |     0.003 |        4 |       624 |            0.64 |
 | Static Power   |     3.129 |          |           |                 |
-| Total          |     3.192 |          |           |                 |
+| Total          |     3.191 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 

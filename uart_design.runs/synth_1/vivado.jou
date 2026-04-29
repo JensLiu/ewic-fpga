@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Apr 29 17:20:56 2026
-# Process ID: 18787
+# Start of session at: Wed Apr 29 18:24:43 2026
+# Process ID: 47327
 # Current directory: /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.runs/synth_1
 # Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.runs/synth_1/top.vds
 # Journal file: /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.runs/synth_1/vivado.jou
-# Running On: alfonso-Modern-14-B4MW, OS: Linux, CPU Frequency: 1834.673 MHz, CPU Physical cores: 8, Host memory: 16133 MB
+# Running On: alfonso-Modern-14-B4MW, OS: Linux, CPU Frequency: 2000.000 MHz, CPU Physical cores: 8, Host memory: 16133 MB
 #-----------------------------------------------------------
 source top.tcl -notrace

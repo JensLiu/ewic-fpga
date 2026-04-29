@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date              : Wed Apr 29 17:25:12 2026
+| Date              : Wed Apr 29 18:28:53 2026
 | Host              : alfonso-Modern-14-B4MW running 64-bit Ubuntu 24.04.2 LTS
 | Command           : report_clock_utilization -file top_clock_utilization_routed.rpt
 | Design            : top
@@ -46,7 +46,7 @@ Table of Contents
 +-----------+-----------+-----------------+------------+---------------+--------------+-------+-------------------+------------------+-------------------+-------------+-----------------+--------------+--------------------+-----------------------------------+------------------------------+
 | Global Id | Source Id | Driver Type/Pin | Constraint | Site          | Clock Region | Root  | Clock Delay Group | Clock Low Fanout | Load Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock              | Driver Pin                        | Net                          |
 +-----------+-----------+-----------------+------------+---------------+--------------+-------+-------------------+------------------+-------------------+-------------+-----------------+--------------+--------------------+-----------------------------------+------------------------------+
-| g0        | src0      | BUFGCE/O        | None       | BUFGCE_X0Y287 | X4Y11        | X4Y10 |                   |                  |                 1 |         223 |               0 |       20.000 | clk_out1_clk_wiz_0 | pll_50MHz_inst/inst/clkout1_buf/O | pll_50MHz_inst/inst/clk_out1 |
+| g0        | src0      | BUFGCE/O        | None       | BUFGCE_X0Y287 | X4Y11        | X4Y10 |                   |                  |                 1 |         239 |               0 |       20.000 | clk_out1_clk_wiz_0 | pll_50MHz_inst/inst/clkout1_buf/O | pll_50MHz_inst/inst/clk_out1 |
 +-----------+-----------+-----------------+------------+---------------+--------------+-------+-------------------+------------------+-------------------+-------------+-----------------+--------------+--------------------+-----------------------------------+------------------------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -264,7 +264,7 @@ Table of Contents
 | X1Y10             |      0 |      24 |      0 |   24960 |      0 |    6720 |      0 |      48 |      0 |      16 |      0 |      96 |      0 |       0 |      0 |       0 |
 | X2Y10             |      0 |      24 |      0 |   36480 |      0 |    7680 |      0 |      72 |      0 |       0 |      0 |     120 |      0 |       0 |      0 |       0 |
 | X3Y10             |      0 |      24 |      0 |   21120 |      0 |    5760 |      0 |      24 |      0 |      16 |      0 |      72 |      0 |       0 |      0 |       0 |
-| X4Y10             |      1 |      24 |    221 |   27840 |      0 |    6240 |      2 |      48 |      0 |      16 |      0 |      96 |      0 |       0 |      0 |       0 |
+| X4Y10             |      1 |      24 |    237 |   27840 |      0 |    6240 |      2 |      48 |      0 |      16 |      0 |      96 |      0 |       0 |      0 |       0 |
 | X5Y10             |      0 |      24 |      0 |   28800 |      0 |    6720 |      0 |      24 |      0 |      16 |      0 |     120 |      0 |       0 |      0 |       0 |
 | X6Y10             |      0 |      24 |      0 |   28800 |      0 |    6720 |      0 |      24 |      0 |      16 |      0 |     120 |      0 |       0 |      0 |       0 |
 | X7Y10             |      0 |      24 |      0 |   25920 |      0 |    6720 |      0 |      48 |      0 |       0 |      0 |      48 |      0 |       4 |      0 |       0 |
@@ -416,7 +416,7 @@ All Modules
 +-----------+-----------------+-------------------+--------------------+-------------+----------------+----------+-------------+----------+----------------+----------+------------------------------+
 | Global Id | Driver Type/Pin | Driver Region (D) | Clock              | Period (ns) | Waveform (ns)  | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                          |
 +-----------+-----------------+-------------------+--------------------+-------------+----------------+----------+-------------+----------+----------------+----------+------------------------------+
-| g0        | BUFGCE/O        | X4Y11             | clk_out1_clk_wiz_0 |      20.000 | {0.000 10.000} | X4Y10    |         223 |        0 |              0 |        0 | pll_50MHz_inst/inst/clk_out1 |
+| g0        | BUFGCE/O        | X4Y11             | clk_out1_clk_wiz_0 |      20.000 | {0.000 10.000} | X4Y10    |         239 |        0 |              0 |        0 | pll_50MHz_inst/inst/clk_out1 |
 +-----------+-----------------+-------------------+--------------------+-------------+----------------+----------+-------------+----------+----------------+----------+------------------------------+
 * Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
 ** IO Loads column represents load cell count of IO types
@@ -428,7 +428,7 @@ All Modules
 |     | X0 | X1 | X2 | X3 | X4      | X5 | X6 | X7 | HORIZONTAL PROG DELAY |
 +-----+----+----+----+----+---------+----+----+----+-----------------------+
 | Y11 |  0 |  0 |  0 |  0 |   (D) 0 |  0 |  0 |  0 |                     - |
-| Y10 |  0 |  0 |  0 |  0 | (R) 223 |  0 |  0 |  0 |                     0 |
+| Y10 |  0 |  0 |  0 |  0 | (R) 239 |  0 |  0 |  0 |                     0 |
 | Y9  |  0 |  0 |  0 |  0 |       0 |  0 |  0 |  0 |                     - |
 | Y8  |  0 |  0 |  0 |  0 |       0 |  0 |  0 |  0 |                     - |
 | Y7  |  0 |  0 |  0 |  0 |       0 |  0 |  0 |  0 |                     - |
@@ -448,7 +448,7 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+------+-----+----+------+-----+---------+------------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                          |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+------+-----+----+------+-----+---------+------------------------------+
-| g0        | 23    | BUFGCE/O        | None       |         223 |               0 | 221 |           0 |    2 |    0 |   0 |  0 |    0 |   0 |       0 | pll_50MHz_inst/inst/clk_out1 |
+| g0        | 23    | BUFGCE/O        | None       |         239 |               0 | 237 |           0 |    2 |    0 |   0 |  0 |    0 |   0 |       0 | pll_50MHz_inst/inst/clk_out1 |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+------+-----+----+------+-----+---------+------------------------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads

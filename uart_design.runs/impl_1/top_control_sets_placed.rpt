@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Wed Apr 29 17:24:31 2026
+| Date         : Wed Apr 29 18:28:12 2026
 | Host         : alfonso-Modern-14-B4MW running 64-bit Ubuntu 24.04.2 LTS
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -41,13 +41,13 @@ Table of Contents
 +--------------------+-------+
 | Total control sets |    33 |
 | >= 0 to < 4        |    21 |
-| >= 4 to < 6        |     1 |
+| >= 4 to < 6        |     0 |
 | >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     4 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     1 |
-| >= 16              |     4 |
+| >= 16              |     5 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -60,8 +60,8 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               3 |            3 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |               3 |            3 |
-| Yes          | No                    | No                     |              56 |           15 |
+| No           | Yes                   | No                     |               3 |            2 |
+| Yes          | No                    | No                     |              72 |           16 |
 | Yes          | No                    | Yes                    |              89 |           19 |
 | Yes          | Yes                   | No                     |              70 |           10 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -73,37 +73,37 @@ Table of Contents
 +-------------------------------+-------------------------------------------------------+------------------------------+------------------+----------------+--------------+
 |          Clock Signal         |                     Enable Signal                     |       Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------------------+-------------------------------------------------------+------------------------------+------------------+----------------+--------------+
-|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[4]                       |                              |                1 |              1 |         1.00 |
-|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[0]                       |                              |                1 |              1 |         1.00 |
-|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[1]                       |                              |                1 |              1 |         1.00 |
-|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[3]                       |                              |                1 |              1 |         1.00 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[5]                       |                              |                1 |              1 |         1.00 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[4]                       |                              |                1 |              1 |         1.00 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[6]                       |                              |                1 |              1 |         1.00 |
-|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[7]                       |                              |                1 |              1 |         1.00 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[3]                       |                              |                1 |              1 |         1.00 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[1]                       |                              |                1 |              1 |         1.00 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[0]                       |                              |                1 |              1 |         1.00 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[2]                       |                              |                1 |              1 |         1.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_decoder/state[1]_i_1__0_n_0                         |                              |                2 |              2 |         1.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_serialiser/state[1]_i_1_n_0                         | u_test_core/E[0]             |                1 |              2 |         2.00 |
-|  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/FSM_sequential_r_state[1]_i_1__0_n_0 |                              |                1 |              2 |         2.00 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_receiver/o_uart_rx_data[7]                       |                              |                1 |              1 |         1.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_decoder/state[1]_i_1__0_n_0                         |                              |                1 |              2 |         2.00 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/FSM_sequential_r_state[1]_i_1__0_n_0 |                              |                2 |              2 |         1.00 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_receiver/FSM_sequential_r_state[1]_i_1_n_0       |                              |                1 |              2 |         2.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_decoder/FSM_onehot_r_rxb_state_reg[1][0]            | u_test_core/E[0]             |                1 |              3 |         3.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_decoder/E[0]                                        | u_test_core/E[0]             |                2 |              3 |         1.50 |
-|  pll_50MHz_inst/inst/clk_out1 | u_engine/E[0]                                         | u_test_core/E[0]             |                1 |              3 |         3.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_test_core/FSM_onehot_state[2]_i_1_n_0               | u_test_core/E[0]             |                1 |              3 |         3.00 |
-|  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/E[0]                                 | u_test_core/E[0]             |                1 |              3 |         3.00 |
-|  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/r_tx_data_index                      |                              |                1 |              3 |         3.00 |
-|  pll_50MHz_inst/inst/clk_out1 |                                                       |                              |                3 |              3 |         1.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_serialiser/state[1]_i_1_n_0                         | u_test_core/w_sys_rst        |                1 |              2 |         2.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_decoder/FSM_onehot_r_rxb_state_reg[1][0]            | u_test_core/w_sys_rst        |                1 |              3 |         3.00 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/E[0]                                 | u_test_core/w_sys_rst        |                1 |              3 |         3.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_test_core/FSM_onehot_state[2]_i_1_n_0               | u_test_core/w_sys_rst        |                1 |              3 |         3.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_engine/E[0]                                         | u_test_core/w_sys_rst        |                1 |              3 |         3.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_decoder/E[0]                                        | u_test_core/w_sys_rst        |                2 |              3 |         1.50 |
+|  pll_50MHz_inst/inst/clk_out1 |                                                       | u_test_core/w_sys_rst        |                2 |              3 |         1.50 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_receiver/r_rx_data_index                         |                              |                2 |              3 |         1.50 |
-|  pll_50MHz_inst/inst/clk_out1 |                                                       | u_test_core/E[0]             |                3 |              3 |         1.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_test_core/E[0]                                      |                              |                1 |              4 |         4.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_engine/proto_tx_ready                               | u_test_core/E[0]             |                3 |              7 |         2.33 |
-|  pll_50MHz_inst/inst/clk_out1 | u_decoder/rem[7]_i_1_n_0                              |                              |                3 |              8 |         2.67 |
+|  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/r_tx_data_index                      |                              |                2 |              3 |         1.50 |
+|  pll_50MHz_inst/inst/clk_out1 |                                                       |                              |                3 |              3 |         1.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_engine/proto_tx_ready                               | u_test_core/w_sys_rst        |                3 |              7 |         2.33 |
+|  pll_50MHz_inst/inst/clk_out1 | u_decoder/rem[7]_i_1__0_n_0                           |                              |                3 |              8 |         2.67 |
 |  pll_50MHz_inst/inst/clk_out1 | u_decoder/prot_buf[opcode][7]_i_1_n_0                 |                              |                2 |              8 |         4.00 |
-|  pll_50MHz_inst/inst/clk_out1 | r_uart_tx_data                                        |                              |                3 |              8 |         2.67 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/r_data_0                             |                              |                2 |              8 |         4.00 |
-|  pll_50MHz_inst/inst/clk_out1 | u_engine/poll_cnt_n                                   | u_test_core/E[0]             |                3 |             10 |         3.33 |
-|  pll_50MHz_inst/inst/clk_out1 | u_serialiser/rem[7]_i_1__0_n_0                        | u_test_core/E[0]             |                4 |             14 |         3.50 |
-|  pll_50MHz_inst/inst/clk_out1 | u_test_core/settle_cnt                                | u_test_core/E[0]             |                3 |             23 |         7.67 |
-|  pll_50MHz_inst/inst/clk_out1 | u_test_core/gap_cnt_0                                 | u_test_core/E[0]             |                4 |             24 |         6.00 |
+|  pll_50MHz_inst/inst/clk_out1 | r_uart_tx_data                                        |                              |                2 |              8 |         4.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_engine/poll_cnt_n                                   | u_test_core/w_sys_rst        |                2 |             10 |         5.00 |
+|  pll_50MHz_inst/inst/clk_out1 | u_serialiser/byte_idx_n                               | u_test_core/w_sys_rst        |                4 |             14 |         3.50 |
+|  pll_50MHz_inst/inst/clk_out1 | u_test_core/w_sys_rst                                 |                              |                3 |             20 |         6.67 |
+|  pll_50MHz_inst/inst/clk_out1 | u_test_core/settle_cnt                                | u_test_core/w_sys_rst        |                3 |             23 |         7.67 |
+|  pll_50MHz_inst/inst/clk_out1 | u_test_core/gap_cnt_0                                 | u_test_core/w_sys_rst        |                6 |             24 |         4.00 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_transmitter/r_clk_count[0]_i_2__0_n_0            | uart_transmitter/r_clk_count |                4 |             32 |         8.00 |
 |  pll_50MHz_inst/inst/clk_out1 | uart_receiver/r_clk_count[0]_i_2_n_0                  | uart_receiver/r_clk_count    |                4 |             32 |         8.00 |
 +-------------------------------+-------------------------------------------------------+------------------------------+------------------+----------------+--------------+

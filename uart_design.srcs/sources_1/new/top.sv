@@ -17,10 +17,11 @@ module top (
   reg  [7:0] r_uart_tx_data = 8'd0;
   wire       w_tx_busy;
 
-  // Power-On Reset — Vivado FIFOs require an active-high reset on init.
-  reg  [3:0] r_rst_cnt = 4'hF;
-  wire       w_sys_rst = (r_rst_cnt != 0);
-  wire       rst_n     = ~w_sys_rst;
+  // Power-On Reset — 20-bit counter @ 50 MHz = ~20 ms, covering PLL lock time.
+  // Vivado FIFOs require an active-high reset to initialize properly.
+  reg  [19:0] r_rst_cnt = 20'hFFFFF;
+  wire        w_sys_rst = (r_rst_cnt != 0);
+  wire        rst_n     = ~w_sys_rst;
 
   always @(posedge w_clk_50MHz) begin
     if (r_rst_cnt != 0) r_rst_cnt <= r_rst_cnt - 1'b1;
@@ -259,7 +260,10 @@ module top (
 
       case (r_tx_state)
         TX_IDLE: begin
-          if (!w_tx_fifo_empty && !w_tx_busy && !w_tx_rd_rst_busy) begin
+          // r_uart_tx_dv guard: w_tx_busy is registered so it reads 0 on
+          // the same cycle the UART TX receives its rising edge trigger;
+          // r_uart_tx_dv is still 1 that cycle, blocking a premature pop.
+          if (!w_tx_fifo_empty && !w_tx_busy && !w_tx_rd_rst_busy && !r_uart_tx_dv) begin
             r_tx_fifo_rd_en <= 1'b1;
             r_tx_state      <= TX_POP;
           end

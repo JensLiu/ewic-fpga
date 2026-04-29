@@ -7,7 +7,7 @@ module uart_tx #(
     input  wire       i_clk,
     input  wire       i_tx_dv,      // High when we want to start sending
     input  wire [7:0] i_tx_data,    // Data to send
-    output reg        o_tx_serial,  // Serialized data
+    output reg        o_tx_serial = 1'b1,  // idle-high; init prevents break on PLL startup
     output reg        o_tx_busy
 );
 

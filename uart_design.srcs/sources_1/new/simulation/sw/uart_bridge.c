@@ -170,6 +170,7 @@ int main(int argc, char **argv) {
     if (cli < 0) { perror("accept"); exit(1); }
     printf("[bridge] sdr_sim connected\n");
     close(srv);  // only one client
+    tcflush(ser_fd, TCIOFLUSH);  // discard startup garbage before relaying
 
     // --- Relay loop ---
     uint8_t buf[256];

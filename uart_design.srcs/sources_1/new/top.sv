@@ -20,6 +20,7 @@ module top (
   // Power-On Reset — Vivado FIFOs require an active-high reset on init.
   reg  [3:0] r_rst_cnt = 4'hF;
   wire       w_sys_rst = (r_rst_cnt != 0);
+  wire       rst_n     = ~w_sys_rst;
 
   always @(posedge w_clk_50MHz) begin
     if (r_rst_cnt != 0) r_rst_cnt <= r_rst_cnt - 1'b1;
@@ -56,7 +57,7 @@ module top (
   );
 
   // -----------------------------------------------------------------------
-  // RX FIFO  —  UART RX (producer) → application logic (consumer)
+  // RX FIFO  —  UART RX (producer) → protocol stack (consumer)
   // -----------------------------------------------------------------------
   wire [7:0] w_rx_fifo_dout;
   wire       w_rx_fifo_full;
@@ -79,22 +80,28 @@ module top (
   );
 
   // -----------------------------------------------------------------------
-  // TX FIFO  —  application logic (producer) → UART TX (consumer)
+  // TX FIFO  —  protocol stack (producer) → UART TX (consumer)
+  //
+  // TX bridge is purely combinatorial: the serialiser's ready/valid
+  // handshake drives the FIFO write port directly, no intermediate regs.
+  // uart_tx_ready is fed back to the serialiser so it stalls when full.
   // -----------------------------------------------------------------------
   wire [7:0] w_tx_fifo_dout;
   wire       w_tx_fifo_full;
   wire       w_tx_fifo_empty;
   wire       w_tx_wr_rst_busy;
   wire       w_tx_rd_rst_busy;
-  reg  [7:0] r_tx_fifo_din   = 8'd0;
-  reg        r_tx_fifo_wr_en = 1'b0;
   reg        r_tx_fifo_rd_en = 1'b0;
+
+  wire       uart_tx_valid;
+  wire [7:0] uart_tx_data;
+  wire       uart_tx_ready = rst_n & ~w_tx_fifo_full & ~w_tx_wr_rst_busy;
 
   uart_fifo tx_fifo (
       .clk        (w_clk_50MHz),
       .srst       (w_sys_rst),
-      .din        (r_tx_fifo_din),
-      .wr_en      (r_tx_fifo_wr_en & ~w_tx_wr_rst_busy),
+      .din        (uart_tx_data),
+      .wr_en      (uart_tx_valid & uart_tx_ready),
       .rd_en      (r_tx_fifo_rd_en),
       .dout       (w_tx_fifo_dout),
       .full       (w_tx_fifo_full),
@@ -104,48 +111,134 @@ module top (
   );
 
   // -----------------------------------------------------------------------
-  // Echo FSM  —  application logic: RX FIFO → TX FIFO
-  // Replace this FSM with your command parser / protocol handler later.
+  // RX bridge  —  RX FIFO → protocol decoder (ready/valid stream)
+  //
+  // The FIFO has 1-cycle read latency, so we use a 3-state FSM to pop a
+  // byte and hold it until the decoder asserts ready.
   // -----------------------------------------------------------------------
-  localparam [1:0] ECHO_IDLE  = 2'd0,
-                   ECHO_POP   = 2'd1,
-                   ECHO_WRITE = 2'd2;
-  reg [1:0] r_echo_state = ECHO_IDLE;
+  wire       uart_rx_valid;
+  wire [7:0] uart_rx_data;
+  wire       uart_rx_ready;
+
+  localparam [1:0] RXB_IDLE  = 2'd0,
+                   RXB_WAIT  = 2'd1,   // rd_en pulsed, waiting for dout
+                   RXB_VALID = 2'd2;   // dout stable, presenting to decoder
+  reg [1:0] r_rxb_state = RXB_IDLE;
+
+  assign uart_rx_valid = (r_rxb_state == RXB_VALID);
+  assign uart_rx_data  = w_rx_fifo_dout;  // stable while in RXB_VALID
 
   always @(posedge w_clk_50MHz) begin
     if (w_sys_rst) begin
-      r_echo_state    <= ECHO_IDLE;
+      r_rxb_state     <= RXB_IDLE;
       r_rx_fifo_rd_en <= 1'b0;
-      r_tx_fifo_wr_en <= 1'b0;
     end else begin
-      // Defaults — signals are pulses unless overridden below.
-      r_rx_fifo_rd_en <= 1'b0;
-      r_tx_fifo_wr_en <= 1'b0;
+      r_rx_fifo_rd_en <= 1'b0;  // default: pulse
 
-      case (r_echo_state)
-        ECHO_IDLE: begin
-          if (!w_rx_fifo_empty && !w_tx_fifo_full &&
-              !w_rx_rd_rst_busy && !w_tx_wr_rst_busy) begin
+      case (r_rxb_state)
+        RXB_IDLE: begin
+          if (!w_rx_fifo_empty && !w_rx_rd_rst_busy) begin
             r_rx_fifo_rd_en <= 1'b1;
-            r_echo_state    <= ECHO_POP;
+            r_rxb_state     <= RXB_WAIT;
           end
         end
 
-        ECHO_POP: begin
-          // One-cycle bubble for FIFO read latency.
-          r_echo_state <= ECHO_WRITE;
+        RXB_WAIT: begin
+          r_rxb_state <= RXB_VALID;  // one-cycle bubble for FIFO latency
         end
 
-        ECHO_WRITE: begin
-          r_tx_fifo_din   <= w_rx_fifo_dout;
-          r_tx_fifo_wr_en <= 1'b1;
-          r_echo_state    <= ECHO_IDLE;
+        RXB_VALID: begin
+          if (uart_rx_ready) begin  // decoder accepted the byte
+            if (!w_rx_fifo_empty && !w_rx_rd_rst_busy) begin
+              r_rx_fifo_rd_en <= 1'b1;  // pipeline: immediately start next pop
+              r_rxb_state     <= RXB_WAIT;
+            end else begin
+              r_rxb_state <= RXB_IDLE;
+            end
+          end
         end
 
-        default: r_echo_state <= ECHO_IDLE;
+        default: r_rxb_state <= RXB_IDLE;
       endcase
     end
   end
+
+  // -----------------------------------------------------------------------
+  // Protocol stack
+  // -----------------------------------------------------------------------
+
+  // engine → serialiser → (TX bridge) → TX FIFO
+  wire         proto_tx_valid;
+  wire         proto_tx_ready;
+  wire [527:0] proto_tx_data;
+
+  // RX FIFO → (RX bridge) → decoder → engine
+  wire         proto_rx_valid;
+  wire         proto_rx_ready;
+  wire [527:0] proto_rx_data;
+
+  // engine ↔ test_core
+  wire        core_wr_valid;
+  wire        core_wr_ready;
+  wire [31:0] core_wr_data;
+  wire [7:0]  core_wr_len;
+  wire        core_rd_valid;
+  wire        core_rd_ready;
+  wire [31:0] core_rd_data;
+  wire [7:0]  core_rd_len;
+
+  sdr_ctrl_protocol_byte_serialiser u_serialiser (
+      .clk       (w_clk_50MHz),
+      .rst_n     (rst_n),
+      .core_valid(proto_tx_valid),
+      .core_ready(proto_tx_ready),
+      .core_data (proto_tx_data),
+      .iter_valid(uart_tx_valid),
+      .iter_ready(uart_tx_ready),
+      .iter_data (uart_tx_data)
+  );
+
+  sdr_ctrl_protocol_byte_decoder u_decoder (
+      .clk       (w_clk_50MHz),
+      .core_valid(proto_rx_valid),
+      .core_ready(proto_rx_ready),
+      .core_data (proto_rx_data),
+      .iter_valid(uart_rx_valid),
+      .iter_ready(uart_rx_ready),
+      .iter_data (uart_rx_data)
+  );
+
+  sdr_ctrl_protocol_engine u_engine (
+      .clk          (w_clk_50MHz),
+      .rst_n        (rst_n),
+      .core_wr_valid(core_wr_valid),
+      .core_wr_ready(core_wr_ready),
+      .core_wr_data (core_wr_data),
+      .core_wr_len  (core_wr_len),
+      .core_rd_valid(core_rd_valid),
+      .core_rd_ready(core_rd_ready),
+      .core_rd_data (core_rd_data),
+      .core_rd_len  (core_rd_len),
+      .req_valid    (proto_tx_valid),
+      .req_ready    (proto_tx_ready),
+      .req_data     (proto_tx_data),
+      .rsp_valid    (proto_rx_valid),
+      .rsp_ready    (proto_rx_ready),
+      .rsp_data     (proto_rx_data)
+  );
+
+  test_core u_test_core (
+      .clk          (w_clk_50MHz),
+      .rst_n        (rst_n),
+      .core_wr_valid(core_wr_valid),
+      .core_wr_ready(core_wr_ready),
+      .core_wr_data (core_wr_data),
+      .core_wr_len  (core_wr_len),
+      .core_rd_valid(core_rd_valid),
+      .core_rd_ready(core_rd_ready),
+      .core_rd_data (core_rd_data),
+      .core_rd_len  (core_rd_len)
+  );
 
   // -----------------------------------------------------------------------
   // TX Consumer FSM  —  TX FIFO → UART TX
@@ -161,8 +254,7 @@ module top (
       r_tx_fifo_rd_en <= 1'b0;
       r_uart_tx_dv    <= 1'b0;
     end else begin
-      // Defaults — signals are pulses unless overridden below.
-      r_tx_fifo_rd_en <= 1'b0;
+      r_tx_fifo_rd_en <= 1'b0;  // default: pulse
       r_uart_tx_dv    <= 1'b0;
 
       case (r_tx_state)
@@ -174,8 +266,7 @@ module top (
         end
 
         TX_POP: begin
-          // One-cycle bubble for FIFO read latency.
-          r_tx_state <= TX_SEND;
+          r_tx_state <= TX_SEND;  // one-cycle bubble for FIFO latency
         end
 
         TX_SEND: begin

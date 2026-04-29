@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xcu280-fsvh2892-2L-e
 
@@ -87,7 +86,14 @@ set_property ip_output_repo /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib -sv /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/uart_tx.sv
+read_verilog -library xil_defaultlib -sv {
+  /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/pkg_sdr_ctrl_protocol.sv
+  /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_decoder.sv
+  /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_byte_serialiser.sv
+  /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/rtl/protocol/sdr_ctrl_protocol_engine.sv
+  /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/rtl/test_core.sv
+  /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/uart_tx.sv
+}
 read_verilog -library xil_defaultlib {
   /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/uart_rx.sv
   /home/alfonso/TFM/ewic-fpga_v2/ewic-fpga/uart_design.srcs/sources_1/new/top.sv
